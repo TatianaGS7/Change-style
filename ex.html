@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Change style</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <style>
+   .cont{
+      height: 400px;
+   }
+  </style>
+</head>
+
+<body>
+
+<nav id="menu" class="navbar navbar-expand-sm bg-primary navbar-dark">
+  <a class="navbar-brand" href="#">Logo</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link 1</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link 2</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link 3</a>
+      </li>    
+    </ul>
+  </div>  
+</nav>
+
+  <div id="accordion">
+    <div class="card">
+      <div class="card-header">
+        <a class="card-link" data-toggle="collapse" href="#Style_panel">
+          Style panel 
+          <span id="arr" class='float-right mt-1 text-primary txt'>&#9660;</span>
+        </a>
+      </div>
+      <div id="Style_panel" class="collapse show" data-parent="#accordion">
+        <div class="card-body">
+
+            <label for="sel1">Select theme:</label>
+            <div class="form-check-inline">
+              <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" name="optradio" id="radio1">
+                <label class="custom-control-label" for="radio1">Primary</label>
+              </div>
+            </div>
+            <div class="form-check-inline">
+              <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" name="optradio" id="radio2">
+                <label class="custom-control-label" for="radio2">Danger</label>
+              </div>
+            </div>            
+
+            <div class="form-check-inline">
+              <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" name="optradio" id="radio3">
+                <label class="custom-control-label" for="radio3">Success</label>
+              </div>
+            </div>
+            <div class="form-check-inline">
+              <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" name="optradio" id="radio4">
+                <label class="custom-control-label" for="radio4">Warning</label>
+              </div>
+            </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-sm-12">
+        <div class="container p-3 my-3 border border-primary cont"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-sm-12">
+        <div class="container p-3 my-3 border border-primary cont"></div>
+    </div>
+  </div>
+</div>
+
+<div id="footer" class="container-fluid text-center mb-0 bg-primary p-1 text-white">
+  <p>Footer</p>
+</div>
+
+<script>
+$(document).ready(function(){
+  
+  document.getElementById("radio1").checked = true;
+
+  // Arrow
+  $(".collapse").on('show.bs.collapse', function(){
+    $("#arr").css("transform", "rotateX(180deg)");
+  })
+
+  $(".collapse").on('hide.bs.collapse', function(){
+    $("#arr").css("transform", "rotateX(0deg)");
+  })
+
+    // Changing color theme
+    // Primary
+     $("#radio1").click(function(){
+        // Menu, footer
+          $("#menu, #footer").removeClass("bg-danger").removeClass("bg-success").removeClass("bg-warning");
+          $("#menu, #footer").addClass("bg-primary");
+        // border
+          $(".cont").removeClass("border-danger").removeClass("border-success").removeClass("border-warning");
+          $(".cont").addClass("border-primary");
+        // Text
+          $(".card-link, .txt").removeClass("text-danger").removeClass("text-success").removeClass("text-warning");
+          $(".card-link, .txt").addClass("text-primary");
+     });
+     
+     // Danger
+     $("#radio2").click(function(){
+          $("#menu, #footer").removeClass("bg-primary").removeClass("bg-success").removeClass("bg-warning");
+          $("#menu, #footer").addClass("bg-danger");
+          $(".cont").removeClass("border-primary").removeClass("border-success").removeClass("border-warning");       
+          $(".cont").addClass("border-danger");
+          $(".card-link, .txt").removeClass("text-primary").removeClass("text-success").removeClass("text-warning");
+          $(".card-link, .txt").addClass("text-danger");
+     });     
+
+     // Success
+     $("#radio3").click(function(){
+          $("#menu, #footer").removeClass("bg-primary").removeClass("bg-danger").removeClass("bg-warning");
+          $("#menu, #footer").addClass("bg-success");
+          $(".cont").removeClass("border-primary").removeClass("border-danger").removeClass("border-warning");       
+          $(".cont").addClass("border-success");
+          $(".card-link, .txt").removeClass("text-primary").removeClass("text-danger").removeClass("text-warning");
+          $(".card-link, .txt").addClass("text-success");
+     });
+
+     // Warning
+     $("#radio4").click(function(){
+          $("#menu, #footer").removeClass("bg-primary").removeClass("bg-danger").removeClass("bg-success");
+          $("#menu, #footer").addClass("bg-warning");
+          $(".cont").removeClass("border-primary").removeClass("border-danger").removeClass("border-success");       
+          $(".cont").addClass("border-warning");
+          $(".card-link, .txt").removeClass("text-primary").removeClass("text-danger").removeClass("text-success");
+          $(".card-link, .txt").addClass("text-warning");
+     });
+
+
+});
+</script>
+
+</body>
+</html>
